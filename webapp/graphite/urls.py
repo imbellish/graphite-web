@@ -17,12 +17,14 @@ from django.conf import settings
 from django.conf.urls import patterns, include, url
 from django.contrib import admin
 
-try:
-    from django.template.base import add_to_builtins
-except ImportError:  # Django < 1.7
-    from django.template.loader import add_to_builtins
 
-if django.VERSION < (1, 5):  # load the "future" {% url %} tag
+if django.VERSION < (1, 8): # add_to_builtins removed in Django 1.9
+    try:
+        from django.template.base import add_to_builtins
+    except ImportError:  # Django < 1.7
+        from django.template.loader import add_to_builtins
+
+if django.VERSION < (1, 5) and django.VERSION > (1, 8):  # load the "future" {% url %} tag
     add_to_builtins('django.templatetags.future')
 
 if django.VERSION < (1, 7):
