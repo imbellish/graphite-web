@@ -1,7 +1,12 @@
 import datetime
 
 import pytz
+from django import VERSION
 
+if VERSION > (1, 7):
+    from django.contrib.sites.models import Site as RequestSite
+else: 
+    from django.contrib.sites.models import RequestSite
 from django.contrib.sites.models import RequestSite
 from django.shortcuts import render_to_response, get_object_or_404
 from django.utils.timezone import now, make_aware

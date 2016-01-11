@@ -67,6 +67,7 @@ INSTALLED_APPS = (
   'django.contrib.admin',
   'django.contrib.contenttypes',
   'django.contrib.staticfiles',
+  'django.contrib.sites',
   'tagging',
 )
 
